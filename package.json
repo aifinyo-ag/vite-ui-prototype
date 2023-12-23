@@ -17,7 +17,8 @@
 	],
 	"scripts": {
 		"build": "tsc && vite build",
-		"build-storybook": "storybook build",
+		"build-storybook": "build-storybook -s public",
+  		"serve-storybook": "serve storybook-static",
 		"dev": "vite",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
