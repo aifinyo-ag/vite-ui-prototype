@@ -1,31 +1,30 @@
-import { defineConfig } from 'vite'
-import { resolve } from 'path'
-import react from '@vitejs/plugin-react'
-import dts from 'vite-plugin-dts'
+import { defineConfig } from "vite";
+import { resolve } from "path";
+import react from "@vitejs/plugin-react";
+import dts from "vite-plugin-dts";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: process.env.NODE_ENV === 'storybook' ? [react()] : [react(), dts({ rollupTypes: true, insertTypesEntry: true })],
   build: {
     lib: {
       // Could also be a dictionary or array of multiple entry points
-      entry: [resolve(__dirname, 'components/index.ts')],
-      name: 'aifinyoUI',
+      entry: [resolve(__dirname, "components/index.ts")],
+      name: "aifinyoUI",
       // the proper extensions will be added
-      fileName: 'aifinyoUI',
-    
+      fileName: "aifinyoUI",
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ['react'],
+      external: ["react"],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
-          react: 'React',
+          react: "React",
         },
       },
     },
   },
-})
+});
