@@ -5,8 +5,8 @@ export default defineConfig({
         clearMocks: true,
         coverage: {
             provider: "v8",
-            exclude: ["lib", "node_modules", "components/index.tsx", "components/types.d.ts","components/**/*.stories.{ts,tsx}", "components/test/test-utils.tsx"],
-            include: ["./components/**/*.{ts,tsx}"],
+            exclude: ["lib", "node_modules", "components/index.ts", "components/common.ts", "components/types.tsx","components/**/*.stories.{ts,tsx}", "components/test/test-utils.tsx"],
+            include: ["components/**/*.{ts,tsx}"],
             reporter: ["text"],
         },
         environment: "jsdom",

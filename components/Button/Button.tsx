@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import classnames from "classnames";
 import type { Color, Shape, Size } from "../types.tsx";
+import { getVariant } from "../common.ts";
 
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
@@ -42,6 +43,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		},
 		ref,
 	) => {
+		const variantClass = getVariant(variant || "primary");
 		const classNames = classnames({
 			"relative w-fit inline-flex cursor-pointer select-none items-center justify-center gap-x-4 whitespace-nowrap rounded-full align-middle text-2xl":
 				true,
@@ -53,21 +55,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			"h-16 text-4xl": size === "large",
 			"rounded-br-none": shape === "ai",
 			"rounded-md": shape === "radius",
-			"bg-primary border-primary text-white": variant === "primary",
-			"bg-secondary border-secondary": variant === "secondary",
-			"bg-dark border-dark text-white": variant === "dark",
-			"bg-gray border-gray": variant === "gray",
-			"bg-light border-light": variant === "light",
-			"bg-alert border-alert text-white": variant === "alert",
-			"bg-success border-success text-white": variant === "success",
-			"bg-info border-info": variant === "info",
-			"bg-warn border-warn": variant === "warn",
-			"bg-darkgreen border-darkgreen text-white": variant === "darkgreen",
-			"bg-mediumgreen border-mediumgreen text-white": variant === "mediumgreen",
-			"bg-lightgreen border-lightgreen": variant === "lightgreen",
-			"bg-darkblue border-darkblue  text-white": variant === "darkblue",
-			"bg-blue border-blue": variant === "blue",
-			"bg-lightblue border-lightblue": variant === "lightblue",
+			[variantClass]: variant,
 			"bg-transparent border-primary !text-primary": outline,
 			"w-full": fullWidth,
 			"border-transparent bg-transparent text-primary": noBorder,
@@ -94,11 +82,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 export const ButtonDefaults = {
 	disabled: false,
 	fullWidth: false,
-	iconButton: false,
-	iconSpin: false, 
+	// iconButton: false,
+	// iconSpin: false, 
 	noBorder: false,
 	outline: false,
-	overflow: false,
+	// overflow: false,
 	shape: "round" as Shape,
 	variant: "primary" as Color,
 };

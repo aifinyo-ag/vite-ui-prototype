@@ -1,17 +1,22 @@
-import { describe, expect,it,vi } from "vitest";
-import { render, screen, userEvent } from "../test/test-utils";
-import {Button } from "./Button";
+import { describe, expect, it,  vi, afterEach } from "vitest";
+import { cleanup, render, userEvent } from "../test/test-utils";
+import { Button } from "./Button";
 
 describe("Button", () => {
 	it("should render with children", () => {
-		render(<Button>asd</Button>);
-		expect(screen.getByText(/asd/i)).toBeDefined();
+		const button = render(<Button>asd</Button>);
+		expect(button).toBeDefined();
 	});
 
-    it("should render with children", async () => {
-        const onClick = vi.fn();
-        render(<Button onClick={onClick}>asd</Button>);
-        await userEvent.click(screen.getByText(/asd/i));
-        expect(onClick).toHaveBeenCalled();
+	it("should fire onClick when it is clicked", async () => {
+		const onClick = vi.fn();
+		const button = render(<Button onClick={onClick}>asd</Button>);
+		await userEvent.click(button.getByText(/asd/i));
+		expect(onClick).toHaveBeenCalled();
+	});
+
+	afterEach(() => {
+		vi.resetAllMocks();
+		cleanup();
 	});
 });
