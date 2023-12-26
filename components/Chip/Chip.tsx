@@ -25,12 +25,12 @@ export const Chip = ({
 	const variantClass = getVariant(variant || "primary");
 
 	const classNames = classnames({
-		"relative rounded-full outline-none whitespace-nowrap px-6 py-2": true,
+		"block relative rounded-full outline-none whitespace-nowrap px-6 py-2 w-fit border-2": true,
 		[variantClass]: variant,
 		"rounded-full": true,
-		"bg-transparent:": outline,
-		"text-md px-4 py-1": small,
-		"W-full": fullWidth,
+		"!bg-transparent text-black border-2": outline,
+		"!text-md !px-4 !py-1": small,
+		"w-full text-center": fullWidth,
 		[className || ""]: true,
 	});
 
