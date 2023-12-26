@@ -117,6 +117,23 @@ export const Noborder: Story = {
 		size: "tiny",
 	},
 };
+export const LoadingState: Story = {
+	render: (args: ButtonProps) => (
+		<div className="flex flex-col gap-2">
+			<Button {...args} shape="round" loading size="tiny">
+				round
+			</Button>
+			<Button {...args} shape="ai" loading size="tiny">
+				aifinyo
+			</Button>
+			<Button {...args} shape="radius" loading size="tiny">
+				radius
+			</Button>
+			<Button {...args} shape="radius" loading size="tiny" />
+			<Button {...args} shape="radius" loading size="tiny" variant="secondary"/>
+		</div>
+	),
+};
 export const CustomClassname: Story = {
 	args: {
 		children: "Button",
